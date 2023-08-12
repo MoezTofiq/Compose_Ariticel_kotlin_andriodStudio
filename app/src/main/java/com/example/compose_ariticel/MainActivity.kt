@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -33,25 +31,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Page(
+                        title = stringResource(R.string.title),
+                        body = stringResource(R.string.body),
+                        body2 = stringResource(
+                            R.string.body2
+                        )
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Composable
-fun HeadingImage() {
-//    composable for the top most heading
-
 }
 
 @Composable
@@ -62,8 +52,12 @@ fun Page(title: String, body: String, body2: String) {
     Column {
         Image(painter = image, contentDescription = null, contentScale = ContentScale.FillWidth)
         Text(text = title, modifier = Modifier.padding(16.dp), fontSize = 24.sp)
-        Text(text = body, modifier = Modifier.padding(start = 16.dp, end = 16.dp), textAlign = TextAlign.Justify)
-        Text(text = body2,modifier = Modifier.padding(16.dp), textAlign = TextAlign.Justify)
+        Text(
+            text = body,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+            textAlign = TextAlign.Justify
+        )
+        Text(text = body2, modifier = Modifier.padding(16.dp), textAlign = TextAlign.Justify)
 
     }
 
